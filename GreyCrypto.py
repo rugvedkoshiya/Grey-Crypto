@@ -86,5 +86,5 @@ def mainFunc():
 
 if __name__ == "__main__":
     scheduler = BlockingScheduler()
-    scheduler.add_job(mainFunc, 'interval', minute='1')
+    scheduler.add_job(mainFunc, 'interval', hours=1)
     scheduler.start()
