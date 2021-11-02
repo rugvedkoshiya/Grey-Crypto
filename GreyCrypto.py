@@ -4,7 +4,7 @@ import telegram
 import requests
 from telegram import ParseMode
 from config import Config as SETTING
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from prettytable import PrettyTable
 from apscheduler.schedulers.blocking import BlockingScheduler
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -46,9 +46,9 @@ def createTable(jsonData):
 
 
 def createImage(cryptoTable):
-    img = Image.new("RGB", (512, 250), color = (30, 30, 30))
+    img = Image.new("RGB", (512, 270), color = (30, 30, 30))
     drawimg = ImageDraw.Draw(img)
-    drawimg.text((10,10), text=cryptoTable.get_string(title="Grey Crypto - @gryecryptobot"), fill=(225, 225, 225), align="center")
+    drawimg.text((12,12), text=cryptoTable.get_string(title="Grey Crypto - @gryecryptobot"), fill=(225, 225, 225), align="center")
     img.save("image.png")
 
 
@@ -85,6 +85,7 @@ def mainFunc():
 
 
 if __name__ == "__main__":
-    scheduler = BlockingScheduler()
-    scheduler.add_job(mainFunc, 'interval', hours=1)
-    scheduler.start()
+    mainFunc()
+    # scheduler = BlockingScheduler()
+    # scheduler.add_job(mainFunc, 'interval', hours=1)
+    # scheduler.start()
